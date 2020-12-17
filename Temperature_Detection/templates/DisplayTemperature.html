@@ -1,0 +1,30 @@
+<!--Programing Assignment 1-->
+<!--Name : Ankita Anilkumar Khadsare[ak8932] -->
+
+<!DOCTYPE html>
+<head>
+    <title>Temperature</title>
+</head>
+<style>
+        body{
+            background-image: url('/static/page3.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+           background-size: cover;
+        }
+        input[type="text"]{
+            font-size: 20px;
+        }
+        label{
+            font-size: 20px;
+        }
+    </style>
+    <body>
+        <center>
+        {% if temp %}
+            <h2 style="color: cornsilk">The current temperature at {{place}} is {{temp}}.</h2>
+            <h2 style="color: cornsilk">This is equivalent to {{converted_temp}} in Fahrenheit.</h2>
+        {% endif %}
+            </center>
+    </body>
+</html>

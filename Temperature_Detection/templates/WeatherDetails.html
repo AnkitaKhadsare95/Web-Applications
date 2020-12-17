@@ -1,0 +1,59 @@
+<!--Programing Assignment 1-->
+<!--Name : Ankita Anilkumar Khadsare[ak8932] -->
+
+<!DOCTYPE html>
+
+<head>
+    <title>Location</title>
+    <h2 style="color: antiquewhite" align="left">GPS coordinates for your desired location have been identified.
+                                                    Hit Get Temperature to obtain the current temperature.</h2>
+    <p  ><h1 style="color: antiquewhite"><b>=======================</b></h1></p>
+</head>
+<style>
+        body{
+            background-color: darkcyan;
+            background-image: url('/static/page2.png');
+
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size:contain;
+            position: absolute;
+            top: 5%;
+            left: 70%;
+        }
+    input[type="text"]{
+            font-size: 20px;
+        }
+        label{
+            font-size: 20px;
+        }
+    </style>
+<body>
+
+    <center>
+    {% if not place %}
+    <form action="http://localhost:5000/WeatherDetails" method="post">
+         <p>
+             <input type="text" placeholder="Enter a Place" name="place" required></p>
+         <p><input type = "submit" value = "Search" /></p>
+    </form>
+    {% endif %}
+    {% if place %}
+        <form action="http://localhost:5000/DisplayTemperature" method="post">
+            <p>
+                <label style="color: ghostwhite" ><b>Place:</b></label>
+                <input type="text" placeholder="Enter a Place" name="place" value={{place}} required>
+            </p>
+            <p>
+                <label style="color: ghostwhite" ><b>Latitude:</b></label>
+                <span><input type="text" name="lat" value={{lat}} required></span>
+            </p>
+            <p><label style="color: ghostwhite" ><b>Longitude:</b></label>
+            <span><input type="text" name="long" value={{long}} required></span>
+            </p>
+            <p><input type = "submit" value = "Get Temperature" /></p>
+        </form>
+    {% endif %}
+        </center>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!--Programing Assignment 1-->
+<!--Name : Ankita Anilkumar Khadsare[ak8932] -->
+
+<!DOCTYPE html>
+<html>
+<title>Welcome to WEB_APP</title>
+    <style>
+        body{
+            background-image: url('/static/page1.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            position: absolute;
+            top: 3%;
+            left: 13%;
+        }
+        input[type="text"]{
+            font-size: 20px;
+        }
+        label{
+            font-size: 20px;
+        }
+    </style>
+   <body>
+
+   <center>
+       <h1 style="color: purple">Welcome ! You can now easily find the current temperature of any place you desire.</h1>
+       {% if not place %}
+        <form action="http://localhost:5000/WeatherDetails" method="post">
+            <p>
+                <label style="color: black"><b>Enter a place:</b> </label>
+                <input type="text" placeholder="Enter a Place " name="place" aria-valuetext="60" required >
+            </p>
+            <p><input type = "submit" value = "Search" /></p>
+        </form>
+        {% endif %}
+        {% if place %}
+        <form action="http://localhost:5000/WeatherDetails" method="post">
+            <p><input type="text" placeholder="Enter a Place" name="place" value={{place}} required></p>
+            <p><input type = "submit" value = "Search" /></p>
+            <p><input type="text" name="lat" value={{lat}} required></p>
+            <p><input type="text" name="long" value={{long}} required></p>
+            <p><input type = "submit" value = "Get Temperature" /></p>
+        </form>
+        {% endif %}
+       </center>
+   </body>
+</html>
